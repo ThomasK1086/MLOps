@@ -1,0 +1,113 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0" version="27.0.9">
+  <diagram name="Page-1" id="lsYe_Y57aCc6M77lidOl">
+    <mxGraphModel dx="1375" dy="759" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-35" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#cdeb8b;strokeColor=none;opacity=50;" vertex="1" parent="1">
+          <mxGeometry x="260" y="340" width="500" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-33" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="310" y="660" width="470" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-2" value="Flow" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="550" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-3" value="&lt;blockquote&gt;&lt;div align=&quot;left&quot;&gt;/flow_src/&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&amp;nbsp;|- flow.py&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&amp;nbsp;|- task1.py&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&amp;nbsp;|- Dockerfile&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&amp;nbsp;|- requirements.txt&lt;/div&gt;&lt;/blockquote&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="290" y="350" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-4" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="bQOgRkpoZUmAG8uQhmbL-3" target="bQOgRkpoZUmAG8uQhmbL-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="359.66" y="460" as="sourcePoint" />
+            <mxPoint x="359.66" y="530.34" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-5" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=block;" edge="1" parent="1" source="bQOgRkpoZUmAG8uQhmbL-3" target="bQOgRkpoZUmAG8uQhmbL-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="400" as="sourcePoint" />
+            <mxPoint x="550" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-6" value="&lt;div&gt;Remote Git&lt;/div&gt;&lt;div&gt;Flow Repository&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="370" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-8" value="Prefect-Server" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="690" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-9" value="Mlflow Server" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="680" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-10" value="&lt;div&gt;&lt;b&gt;Flow Executioner&lt;/b&gt;&lt;/div&gt;&lt;div&gt;main entry point&lt;/div&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="170" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-13" value="Starts multiple Flows" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0;exitDx=110;exitDy=100;exitPerimeter=0;shape=flexArrow;" edge="1" parent="1" source="bQOgRkpoZUmAG8uQhmbL-10" target="bQOgRkpoZUmAG8uQhmbL-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="420" as="sourcePoint" />
+            <mxPoint x="290" y="370" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-14" value="&lt;blockquote&gt;&lt;div align=&quot;left&quot;&gt;&lt;b&gt;Flow Configuration&lt;/b&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;div align=&quot;left&quot;&gt;&lt;ul&gt;&lt;li&gt;Inputs&lt;/li&gt;&lt;li&gt;Outputs&lt;/li&gt;&lt;li&gt;Status&lt;/li&gt;&lt;li&gt;Commit ID&lt;/li&gt;&lt;li&gt;Model ID&lt;/li&gt;&lt;li&gt;etc.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="320" y="810" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-15" value="Commit Hash" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.669;entryY=0.006;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="bQOgRkpoZUmAG8uQhmbL-6" target="bQOgRkpoZUmAG8uQhmbL-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="620" as="sourcePoint" />
+            <mxPoint x="230" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-24" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0;exitDx=70;exitDy=80;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bQOgRkpoZUmAG8uQhmbL-2" target="bQOgRkpoZUmAG8uQhmbL-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="540" as="sourcePoint" />
+            <mxPoint x="230" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-25" value="stored as artifact" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0.98;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="bQOgRkpoZUmAG8uQhmbL-14" target="bQOgRkpoZUmAG8uQhmbL-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="460" as="sourcePoint" />
+            <mxPoint x="230" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="640" y="890" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-26" value="Model" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0;entryDx=90;entryDy=0;entryPerimeter=0;exitX=-0.008;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;dashed=1;" edge="1" parent="1" source="bQOgRkpoZUmAG8uQhmbL-2" target="bQOgRkpoZUmAG8uQhmbL-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="570" as="sourcePoint" />
+            <mxPoint x="530" y="520" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="170" y="590" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-27" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1.01;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="bQOgRkpoZUmAG8uQhmbL-9" target="bQOgRkpoZUmAG8uQhmbL-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="270" as="sourcePoint" />
+            <mxPoint x="340" y="770" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="180" y="890" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-28" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0;entryDx=90;entryDy=0;entryPerimeter=0;exitX=0;exitY=0;exitDx=120;exitDy=50;exitPerimeter=0;" edge="1" parent="1" source="bQOgRkpoZUmAG8uQhmbL-2" target="bQOgRkpoZUmAG8uQhmbL-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="600" as="sourcePoint" />
+            <mxPoint x="470" y="550" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="630" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-29" value="&lt;b&gt;Versioning of Flow/Pipeline&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="620" y="460" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-30" value="Versioning of Run/Execution" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="630" y="960" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bQOgRkpoZUmAG8uQhmbL-38" value="&lt;div&gt;Each Block is a &lt;br&gt;&lt;/div&gt;&lt;div&gt;Docker container&lt;/div&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="60" width="150" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

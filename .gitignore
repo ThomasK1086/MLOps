@@ -1,4 +1,19 @@
+mlartifacts/
+mlruns/
+
+data_flow1/
+data_flow2/
+flows_git/
+
+test*
+
+*.pem
+.env
+
+*.zip
+
 # Byte-compiled / optimized / DLL files
+.idea/
 __pycache__/
 *.py[cod]
 *$py.class
@@ -127,8 +142,6 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
-# Environments
-.env
 .venv
 env/
 venv/

@@ -1,0 +1,76 @@
+# Docker Compose setup for Prefect + MLflow + Python App
+# Save as docker-compose.yml
+
+version: '3.8'
+
+services:
+  # Prefect Server
+  prefect-dockerserver:
+    image: prefecthq/prefect:3-latest
+    ports:
+      - "4200:4200"
+    command: sh -c "apt-get update && apt-get install -y curl && prefect server start --host 0.0.0.0 --port 4200"
+    environment:
+      - PREFECT_API_URL=http://127.0.0.1:4200/api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:4200/api/health"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 30s  # Wait 30 seconds before starting healthchecks
+    hostname: prefect
+    networks:
+      default:
+        aliases:
+          - prefect
+          
+  # Mlflow Server
+  mlflow-dockerserver:
+    image: python:3.11.4-slim
+    ports:
+      - "8080:8080"
+    command: >
+      bash -c "
+        apt-get update && apt-get install -y curl &&
+        pip install mlflow &&
+        mlflow server --host 0.0.0.0 --port 8080 --backend-store-uri sqlite:///mlflow-db/mlflow.db --default-artifact-root /mlflow-artifacts
+      "
+    volumes:
+      - mlflow-data:/mlflow-artifacts
+      - mlflow-db:/mlflow-db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8080/"]
+      interval: 10s
+      timeout: 15s
+      retries: 10
+      start_period: 30s  # Wait 30 seconds before starting healthchecks
+    hostname: mlflow
+    networks:
+      default:
+        aliases:
+          - mlflow
+          
+
+  # Python App
+  python-app:
+    build: .
+    volumes:
+      - ./output:/app/output
+    depends_on:
+      prefect-dockerserver:
+        condition: service_healthy
+      mlflow-dockerserver:
+        condition: service_healthy
+    environment:
+      - PREFECT_API_URL=http://prefect:4200/api
+      - MLFLOW_TRACKING_URI=http://mlflow:8080
+
+volumes:
+  mlflow-data:
+  mlflow-db:
+  myvolume:
+
+
+networks:
+  default:
+    driver: bridge
