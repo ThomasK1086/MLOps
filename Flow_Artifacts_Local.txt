@@ -1,168 +1,77 @@
 {
-  "flow_run_id": "be856da7-9455-46f7-8c55-07c8072cc1e2",
-  "inputs": {
-    "output_dir": "./data_flow1",
-    "outfile_name": "steam_games_dataset.csv",
-    "report_name": "report.html",
-    "model_name": "RandomForestMulticlassifier",
-    "cutoff_year": 2020
-  },
-  "git_commit_hexsha": "f8948517bea700c478ee906cd5893857b064b221",
-  "metrics": [
-    0.6707076946836029,
-    0.3397200333827909,
-    0.3257684934807694
-  ],
-  "model_training_successful": true,
-  "model_path_full": "models:/RandomForestMulticlassifier/28",
-  "timestamp_start": "2025-05-26T16:05:31.424056",
-  "timestamp_end": "2025-05-26T16:06:21.174270"
-}{
-  "flow_run_id": "f2d5c509-3b49-46f0-99f6-527bfac2f017",
+  "flow_run_id": "176f68ce-b6a5-4c94-b49e-878b856279b5",
   "kwargs": {
-    "output_dir": "./data_flow1",
+    "output_dir": "./data_flow1/",
     "outfile_name": "steam_games_dataset.csv",
     "report_name": "report.html",
     "model_name": "RandomForestMulticlassifier",
     "cutoff_year": 2020
   },
-  "git_commit_hexsha": "0b8c80b4f3e2f87bd1fa520a35a983ace249d2ce",
+  "git_commit_hexsha": "6fe8d48204ac98520a8e711e74e104f14e139cbe",
   "metrics": {
-    "accuracy": 0.6767306281610749,
-    "balanced_accuracy": 0.33647663821979507,
-    "f1-score": 0.31352586759920126
+    "accuracy": 0.6691633527663025,
+    "balanced_accuracy": 0.33551754866644967,
+    "f1-score": 0.32017338118569916
   },
   "model_training_successful": true,
-  "model_path_full": "models:/RandomForestMulticlassifier/30",
-  "timestamp_start": "2025-05-26T16:37:03.947573",
-  "timestamp_end": "2025-05-26T16:37:55.044866"
+  "model_path_full": "models:/RandomForestMulticlassifier/3",
+  "timestamp_start": "2025-05-28T10:11:12.557389",
+  "timestamp_end": "2025-05-28T10:12:42.725230"
 }{
-  "flow_run_id": "09db68e3-cae1-45d4-9810-2862189793e0",
+  "flow_run_id": "f86e5cad-f838-4c53-b377-62f860740c58",
   "kwargs": {
-    "output_dir": "./data_flow1",
+    "output_dir": "./data_flow2/",
     "outfile_name": "steam_games_dataset.csv",
     "report_name": "report.html",
     "model_name": "RandomForestMulticlassifier",
     "cutoff_year": 2020
   },
-  "git_commit_hexsha": "20fd68ddab3906ef35f7573e76acd561e6d0c37b",
+  "git_commit_hexsha": "882db7157cb27ab72d91e08569ab878a2c5da93f",
   "metrics": {
-    "accuracy": 0.67742558202386,
-    "balanced_accuracy": 0.3573256345661819,
-    "f1-score": 0.35087421822675835
+    "accuracy": 0.6710358673410293,
+    "balanced_accuracy": 0.3334444777834632,
+    "f1-score": 0.32797465689877286
   },
   "model_training_successful": true,
-  "model_path_full": "models:/RandomForestMulticlassifier/31",
-  "timestamp_start": "2025-05-26T16:42:18.198405",
-  "timestamp_end": "2025-05-26T16:43:11.453783"
+  "model_path_full": "models:/RandomForestMulticlassifier/4",
+  "timestamp_start": "2025-05-28T10:12:55.376104",
+  "timestamp_end": "2025-05-28T10:14:35.305087"
 }{
-  "flow_run_id": "5daab647-ff2d-40b5-a37b-f9b54ed74c2b",
+  "flow_run_id": "29e31617-5a83-4c32-ba2b-a46e457ca0a9",
   "kwargs": {
-    "output_dir": "./data_flow1",
+    "output_dir": "./data_flow1/",
     "outfile_name": "steam_games_dataset.csv",
     "report_name": "report.html",
     "model_name": "RandomForestMulticlassifier",
     "cutoff_year": 2020
   },
-  "git_commit_hexsha": "20fd68ddab3906ef35f7573e76acd561e6d0c37b",
+  "git_commit_hexsha": "62eef2340a929d7b58fe81278aa12205d22c0162",
   "metrics": {
-    "accuracy": 0.6764989768734798,
-    "balanced_accuracy": 0.3350128229004321,
-    "f1-score": 0.32482080473837416
+    "accuracy": 0.6716729083819157,
+    "balanced_accuracy": 0.3261679357715842,
+    "f1-score": 0.30079288461463205
   },
   "model_training_successful": true,
-  "model_path_full": "models:/RandomForestMulticlassifier/32",
-  "timestamp_start": "2025-05-26T16:44:54.558634",
-  "timestamp_end": "2025-05-26T16:45:45.559127"
+  "model_path_full": "models:/RandomForestMulticlassifier/5",
+  "timestamp_start": "2025-05-28T10:19:14.928542",
+  "timestamp_end": "2025-05-28T10:20:45.859653"
 }{
-  "flow_run_id": "62d0652c-7a17-4dc1-8886-2e541e5f34bb",
+  "flow_run_id": "041b0270-c204-4844-8442-17575eb46c56",
   "kwargs": {
-    "output_dir": "./data_flow1",
+    "output_dir": "./data_flow2/",
     "outfile_name": "steam_games_dataset.csv",
     "report_name": "report.html",
     "model_name": "RandomForestMulticlassifier",
     "cutoff_year": 2020
   },
-  "git_commit_hexsha": "20fd68ddab3906ef35f7573e76acd561e6d0c37b",
+  "git_commit_hexsha": "63c6eb92d0990f375882b7a8d0fb43f7089f2997",
   "metrics": {
-    "accuracy": 0.6712482143546581,
-    "balanced_accuracy": 0.35472928375721824,
-    "f1-score": 0.3401774125653919
+    "accuracy": 0.6719624724914096,
+    "balanced_accuracy": 0.33848373957621286,
+    "f1-score": 0.3303068919968078
   },
   "model_training_successful": true,
-  "model_path_full": "models:/RandomForestMulticlassifier/33",
-  "timestamp_start": "2025-05-26T16:52:56.879225",
-  "timestamp_end": "2025-05-26T16:53:49.314664"
-}{
-  "flow_run_id": "5dfa4f70-0dd6-4fb8-9e39-742ee05f786b",
-  "kwargs": {
-    "output_dir": "./data_flow1",
-    "outfile_name": "steam_games_dataset.csv",
-    "report_name": "report.html",
-    "model_name": "RandomForestMulticlassifier",
-    "cutoff_year": 2020
-  },
-  "git_commit_hexsha": "0b8c80b4f3e2f87bd1fa520a35a983ace249d2ce",
-  "metrics": {
-    "accuracy": 0.6703602177522103,
-    "balanced_accuracy": 0.3524628305972781,
-    "f1-score": 0.3273672055079516
-  },
-  "model_training_successful": true,
-  "model_path_full": "models:/RandomForestMulticlassifier/34",
-  "timestamp_start": "2025-05-26T19:01:24.813517",
-  "timestamp_end": "2025-05-26T19:02:19.494441"
-}{
-  "flow_run_id": "c9b78f24-5128-4933-9ceb-e803ecdbc3ee",
-  "kwargs": {
-    "output_dir": "./data_flow1",
-    "outfile_name": "steam_games_dataset.csv",
-    "report_name": "report.html",
-    "model_name": "RandomForestMulticlassifier",
-    "cutoff_year": 2020
-  },
-  "git_commit_hexsha": "72477f0107a6ed1f7748e21fcae9e4c29fb508bf",
-  "metrics": {
-    "accuracy": 0.6713254314505231,
-    "balanced_accuracy": 0.36413495644182875,
-    "f1-score": 0.3526704860513723
-  },
-  "model_training_successful": true,
-  "model_path_full": "models:/RandomForestMulticlassifier/35",
-  "timestamp_start": "2025-05-26T19:26:03.954202",
-  "timestamp_end": "2025-05-26T19:26:59.808823"
-}{
-  "flow_run_id": "913b16be-9bab-41fb-8140-7b38248d4f4e",
-  "kwargs": {
-    "output_dir": "./data_flow1",
-    "outfile_name": "steam_games_dataset.csv",
-    "report_name": "report.html",
-    "model_name": "RandomForestMulticlassifier",
-    "cutoff_year": 2020
-  },
-  "git_commit_hexsha": "cdf90375b5591dbb9e6b1c29f97b71a695c30638",
-  "metrics": {
-    "accuracy": 0.6728504690938574,
-    "balanced_accuracy": 0.3438244585862711,
-    "f1-score": 0.329054034187091
-  },
-  "model_training_successful": true,
-  "model_path_full": "models:/RandomForestMulticlassifier/36",
-  "timestamp_start": "2025-05-26T19:27:11.681083",
-  "timestamp_end": "2025-05-26T19:28:15.109555"
-}{
-  "flow_run_id": "e2b15272-70de-488b-9c55-bb01d1462a2f",
-  "kwargs": {
-    "working_dir": "./data_flow1",
-    "dataset_name": "steam_games_dataset.csv",
-    "report_name": "datadrift_results.html",
-    "model_name": "RandomForestMulticlassifier",
-    "cutoff_year": 2020
-  },
-  "git_commit_hexsha": "3a9d21541b44a684c632bbf0237c42b3868ad345",
-  "model_version": null,
-  "model_alias": null,
-  "model_path_full": "models:/RandomForestMulticlassifier/35",
-  "timestamp_start": "2025-05-26T20:04:21.319371",
-  "timestamp_end": "2025-05-26T20:04:54.543625"
+  "model_path_full": "models:/RandomForestMulticlassifier/6",
+  "timestamp_start": "2025-05-28T10:20:55.903020",
+  "timestamp_end": "2025-05-28T10:22:25.992445"
 }

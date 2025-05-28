@@ -9,8 +9,8 @@
 **/.venv
 **/.classpath
 **/.dockerignore
+**/.idea
 **/.env
-**/.git
 **/.gitignore
 **/.project
 **/.settings

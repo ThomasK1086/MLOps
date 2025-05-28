@@ -1,23 +1,24 @@
 from pathlib import Path
 import importlib.util
 from types import ModuleType
-from typing import Optional
 from datetime import datetime
-import sys
+import os, sys, re, asyncio
 import json
-from mlflow import MlflowClient
+
 from prefect.client.orchestration import get_client
 from prefect.client.schemas.filters import FlowRunFilter, FlowRunFilterId
-import asyncio
-import re
-import os
+
+import cloudpickle
+import base64
 
 from autocommit import GitCredentials, AutoCommitter
+from docker_utils import DockerPathResolver
 
 class FlowExecutor:
-    def __init__(self, credentials: GitCredentials):
+    def __init__(self, credentials: GitCredentials, verbose=False):
         self.repo_path = Path("./flows_git").resolve()
         self.credentials = credentials
+        self.verbose = verbose
 
     def run_flow(self, flow_name: str, *args, **kwargs):
         subfolder_path = self.repo_path / flow_name
@@ -29,7 +30,7 @@ class FlowExecutor:
         )
 
         commit_id = committer.push(commit_message=f"Auto-push before running flow '{flow_name}' at {datetime.now().isoformat()}")
-        print(f"📌 Flow pushed with commit ID: {commit_id}")
+        print(f"📌 Executing flow with commit hash: {commit_id}")
         self._execute_flow(subfolder_path, flow_name, commit_id, *args, **kwargs)
 
 
@@ -62,7 +63,7 @@ class FlowExecutor:
 
 
     def reproduce_flow(self, flow_name: str, flow_run_id: str) -> None:
-        flow_artifact = self.get_artifact(flow_name, flow_run_id)
+        flow_artifact = self.get_artifact(flow_run_id)
         original_args = flow_artifact['kwargs']
         hexsha = flow_artifact['git_commit_hexsha']
         self.rerun_flow(flow_name, **original_args, hexsha=hexsha)
@@ -82,7 +83,7 @@ class FlowExecutor:
 
 
     @staticmethod
-    def get_artifact(flow_name: str, flow_run_id: str) -> dict:
+    def get_artifact(flow_run_id: str) -> dict:
         async def _read_json_from_artifact():
             result = None
             async with get_client() as client:
@@ -91,29 +92,42 @@ class FlowExecutor:
                         id=FlowRunFilterId(any_=[flow_run_id])
                     )
                 )
-                print(f"[DEBUG] Found {len(artifacts)} artifacts")
-                for artifact in artifacts:
-                    print(f"[DEBUG] Artifact key: {artifact.key}")
-                    if artifact.key == flow_name.replace("_", "-"):
-                        print(f"[DEBUG] Found matching artifact for {flow_name}")
-                        print(f"[DEBUG] Artifact content:\n{artifact.data}")
-                        # Extract JSON from markdown code block
-                        match = re.search(r"```json\s*\n(.*?)\n```", artifact.data, re.DOTALL)
-                        if match:
-                            try:
-                                result = json.loads(match.group(1))
-                            except json.JSONDecodeError as e:
-                                print(f"[ERROR] JSON decode error: {e}")
-                        else:
-                            print("[ERROR] No JSON code block found")
+                if not artifacts or len(artifacts) == 0:
+                    raise ValueError(f"Encountered no artifacts for given flow run id: {flow_run_id}")
+                elif len(artifacts) > 1:
+                    raise ValueError(f"Encountered more than one artifact for given flow run id: {flow_run_id}")
+
+                artifact = artifacts[0]
+
+                # Extract JSON from markdown code block
+                match = re.search(r"```json\s*\n(.*?)\n```", artifact.data, re.DOTALL)
+                if match:
+                    try:
+                        result = json.loads(match.group(1))
+                    except json.JSONDecodeError as e:
+                        print(f"[ERROR] JSON decode error: {e}")
+                else:
+                    print("[ERROR] No JSON code block found")
             return result
 
         artifact = asyncio.run(_read_json_from_artifact())
 
         if not artifact:
-            raise FileNotFoundError(f"Could not load artifact for flow '{flow_name}' and run ID '{flow_run_id}'")
+            raise FileNotFoundError(f"Could not load artifact for flow run ID '{flow_run_id}'")
 
         return artifact
+
+    @staticmethod
+    def serialize_function(func) -> str:
+        func_bytes = cloudpickle.dumps(func)
+        func_str = base64.b64encode(func_bytes).decode("utf-8")
+        return func_str
+
+    @staticmethod
+    def deserialize_function(func_str):
+        func_bytes = base64.b64decode(func_str.encode("utf-8"))
+        func = cloudpickle.loads(func_bytes)
+        return func
 
     def _execute_flow(self, subfolder_path: Path, flow_name: str, commit_id: str, *args, **kwargs):
         dockerfile = subfolder_path / "Dockerfile"
@@ -134,11 +148,15 @@ class FlowExecutor:
 
         print(f"🚀 Executing flow '{flow_name}'...")
         module.main(*args, **kwargs, commit_id=commit_id)
+        print("✅ Finished executing flow locally")
+
 
     def _execute_flow_in_container(self, subfolder_path: Path, flow_name: str, commit_id: str, *args, **kwargs):
         import docker
         client = docker.from_env()
-        tag = f"{flow_name.lower()}_flow:latest"
+        resolver = DockerPathResolver()
+
+        tag = f"{flow_name.lower()}_container:latest"
 
         # Build image
         print("🔧 Building Docker image...")
@@ -164,26 +182,44 @@ class FlowExecutor:
 
         # Start container asynchronously
         print("🚀 Launching Docker container...")
+
+        # Get the actual host path that corresponds to /app in this container
+        host_path = resolver.get_host_project_path('/app')
+        print("🔗 Host path to be mounted into sub-container:", host_path)
+
+
         container = client.containers.run(
             image=tag,
-            command=f"python flows_git/{flow_name}/flow.py '{args_json}'",
+            command=f"python /project/flows_git/{flow_name}/flow.py '{args_json}'",
             working_dir="/project",
             volumes={
-                str(Path.cwd().resolve()): {"bind": "/project", "mode": "rw"}
+                host_path: {"bind": "/project", "mode": "rw"},
+                "mlflow-data": {"bind": "/mlflow-artifacts", "mode": "rw"},
             },
-            network_mode="bridge",  # enable networking for Prefect server
+            network='mlops_network',  # enable networking for Prefect server
             environment=env_vars,
             detach=True,
             mem_limit="8g",
             nano_cpus=2_000_000_000,  # 2 CPUs
             stdout=True,
             stderr=True,
-            remove=True
+            remove=False
         )
 
-        logs = container.logs(stream=True)
-        for line in logs:
-            print(line.decode().strip())
+        exit_status = container.wait()
+        print("📦 (Sub)-container exited with status:", exit_status)
+
+        if self.verbose:
+            logs = container.logs(stream=True)
+            for line in logs:
+                print(line.decode().strip())
+
+        print("✅ Finished executing flow in (Sub)-Container")
+
+        container.remove(force=True)
+
+
+
 
 class Hyperparameters():
     def __init__(self, filepath):
@@ -216,3 +252,16 @@ class Hyperparameters():
         self.model_hyperparameters = model_hyperparameters
         with open(self.filepath, "w", encoding="utf-8") as f:
             f.write(json.dumps(model_hyperparameters, indent=2))
+
+
+def pprint_dict(input: dict) -> None:
+    print("{")
+    for key, value in input.items():
+        if isinstance(value, dict):
+            print(f'  {key} :  \u007b')
+            for key2, value2 in value.items():
+                print(f"    {key2} : {value2}")
+            print(f"  \u007d")
+        else:
+            print(f"  {key} : {value}")
+    print("}")

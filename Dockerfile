@@ -1,19 +1,18 @@
-# Use Python 3.11.4 as the base image
 FROM python:3.11.4-slim
 
-# Set working directory in the container
 WORKDIR /app
 
-# Copy requirements file
+# Copy only requirements.txt to install dependencies
 COPY requirements.txt .
 
-# Install dependencies
+# Install system dependencies
 RUN apt-get update && \
-    apt-get install -y curl iputils-ping net-tools
-RUN pip install --no-cache-dir -r requirements.txt
+    apt-get install -y curl iputils-ping net-tools git && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# Copy the entire project directory into the container
-COPY . .
+# Install Python dependencies
+RUN pip install uv
+RUN uv pip install --no-cache-dir -r requirements.txt --system
 
-# Run main_ex2.py when the container starts
 CMD ["python", "main.py"]

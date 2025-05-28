@@ -26,24 +26,20 @@ services:
           
   # Mlflow Server
   mlflow-dockerserver:
-    image: python:3.11.4-slim
+    build:
+      context: .
+      dockerfile: Dockerfile.mlflow
     ports:
       - "8080:8080"
-    command: >
-      bash -c "
-        apt-get update && apt-get install -y curl &&
-        pip install mlflow &&
-        mlflow server --host 0.0.0.0 --port 8080 --backend-store-uri sqlite:///mlflow-db/mlflow.db --default-artifact-root /mlflow-artifacts
-      "
     volumes:
       - mlflow-data:/mlflow-artifacts
       - mlflow-db:/mlflow-db
     healthcheck:
       test: ["CMD", "curl", "-f", "http://127.0.0.1:8080/"]
-      interval: 10s
+      interval: 15s
       timeout: 15s
-      retries: 10
-      start_period: 30s  # Wait 30 seconds before starting healthchecks
+      retries: 15
+      start_period: 30s
     hostname: mlflow
     networks:
       default:
@@ -55,7 +51,10 @@ services:
   python-app:
     build: .
     volumes:
-      - ./output:/app/output
+      - ./:/app  # Mount the entire working directory into /app
+      - /var/run/docker.sock:/var/run/docker.sock  # Ability to spawn docker containers inside this container
+      - mlflow-data:/mlflow-artifacts  # For MLflow artifacts
+    working_dir: /app
     depends_on:
       prefect-dockerserver:
         condition: service_healthy
@@ -64,6 +63,9 @@ services:
     environment:
       - PREFECT_API_URL=http://prefect:4200/api
       - MLFLOW_TRACKING_URI=http://mlflow:8080
+      - APP_ID=1324066
+      - INSTALLATION_ID=68393674
+      - PRIVATE_KEY_PATH=mlops-autocommitbot.2025-05-26.private-key.pem
 
 volumes:
   mlflow-data:
@@ -73,4 +75,5 @@ volumes:
 
 networks:
   default:
+    name: mlops_network
     driver: bridge
