@@ -3,8 +3,8 @@ import time
 import jwt
 import requests
 from pathlib import Path
-from git import Repo
 from typing import Optional
+from git import Repo, InvalidGitRepositoryError, NoSuchPathError
 
 
 @dataclass
@@ -66,7 +66,15 @@ class AutoCommitter:
         self.subfolder_path = self.repo_path / subfolder
         self.credentials = credentials
         self.remote_name = 'origin'
-        self.repo = Repo(self.repo_path)
+
+        try:
+            self.repo = Repo(self.repo_path)
+        except (InvalidGitRepositoryError, NoSuchPathError):
+            print(f"🔍 Repo not found at {self.repo_path}, cloning from remote...")
+            self.repo = Repo.clone_from(
+                f"https://x-access-token:{self.credentials.token}@github.com/ThomasK1086/MLOps-FlowRepo.git",
+                self.repo_path
+            )
 
         self._set_remote_token_auth()
 

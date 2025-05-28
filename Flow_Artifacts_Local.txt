@@ -74,4 +74,141 @@
   "model_path_full": "models:/RandomForestMulticlassifier/6",
   "timestamp_start": "2025-05-28T10:20:55.903020",
   "timestamp_end": "2025-05-28T10:22:25.992445"
+}{
+  "flow_run_id": "e0b13e18-b9c6-473d-92bb-881edfc8d11c",
+  "kwargs": {
+    "output_dir": "./data_flow1/",
+    "outfile_name": "steam_games_dataset.csv",
+    "report_name": "report.html",
+    "model_name": "RandomForestMulticlassifier",
+    "cutoff_year": 2020
+  },
+  "git_commit_hexsha": "d2225f89a54e4d65e5e460b1cf3e85bad3d3a598",
+  "metrics": {
+    "accuracy": 0.6709586502451643,
+    "balanced_accuracy": 0.35947404732850635,
+    "f1-score": 0.3497783315121571
+  },
+  "model_training_successful": true,
+  "model_path_full": "models:/RandomForestMulticlassifier/7",
+  "timestamp_start": "2025-05-28T10:35:11.378616",
+  "timestamp_end": "2025-05-28T10:36:19.305980"
+}{
+  "flow_run_id": "e2bde078-c7c3-45d1-a8c2-b7a952ed80bc",
+  "kwargs": {
+    "output_dir": "./data_flow2/",
+    "outfile_name": "steam_games_dataset.csv",
+    "report_name": "report.html",
+    "model_name": "RandomForestMulticlassifier",
+    "cutoff_year": 2020
+  },
+  "git_commit_hexsha": "93d5dbf89da81a2ec4f5c7df30e23dc9593f7495",
+  "metrics": {
+    "accuracy": 0.6713447357244894,
+    "balanced_accuracy": 0.3176133539951284,
+    "f1-score": 0.2969014130820932
+  },
+  "model_training_successful": true,
+  "model_path_full": "models:/RandomForestMulticlassifier/8",
+  "timestamp_start": "2025-05-28T10:36:30.337973",
+  "timestamp_end": "2025-05-28T10:37:54.454197"
+}{
+  "flow_run_id": "cf961a72-4b6a-4bcf-9817-9861068478d4",
+  "kwargs": {
+    "working_dir": "./data_flow1/",
+    "dataset_name": "steam_games_dataset.csv",
+    "report_name": "datadrift_results.html",
+    "model_name": "RandomForestMulticlassifier",
+    "cutoff_year": 2020
+  },
+  "git_commit_hexsha": "93d5dbf89da81a2ec4f5c7df30e23dc9593f7495",
+  "model_version": null,
+  "model_alias": null,
+  "model_path_full": "models:/RandomForestMulticlassifier/7",
+  "timestamp_start": "2025-05-28T10:38:07.337092",
+  "timestamp_end": "2025-05-28T10:38:19.139693"
+}{
+  "flow_run_id": "13985827-644f-4074-a313-0867c71bb71d",
+  "kwargs": {
+    "output_dir": "./data_flow1/",
+    "outfile_name": "steam_games_dataset.csv",
+    "report_name": "report.html",
+    "model_name": "RandomForestMulticlassifier",
+    "cutoff_year": 2020
+  },
+  "git_commit_hexsha": "37d132af45018524e1b0633847e1a5f4841b849d",
+  "metrics": {
+    "accuracy": 0.6707076946836029,
+    "balanced_accuracy": 0.34983384254336186,
+    "f1-score": 0.337329058301151
+  },
+  "model_training_successful": true,
+  "model_path_full": "models:/RandomForestMulticlassifier/9",
+  "timestamp_start": "2025-05-28T10:54:46.568100",
+  "timestamp_end": "2025-05-28T10:55:59.104019"
+}{
+  "flow_run_id": "9cef6731-1fcd-49be-a8af-40ea97f2010d",
+  "kwargs": {
+    "output_dir": "./data_flow2/",
+    "outfile_name": "steam_games_dataset.csv",
+    "report_name": "report.html",
+    "model_name": "RandomForestMulticlassifier",
+    "cutoff_year": 2020
+  },
+  "git_commit_hexsha": "6d1bcb50fd69a7ce4fbd37312bfa6f3fd52d9873",
+  "metrics": {
+    "accuracy": 0.6715956912860507,
+    "balanced_accuracy": 0.335337640122431,
+    "f1-score": 0.3255680206172081
+  },
+  "model_training_successful": true,
+  "model_path_full": "models:/RandomForestMulticlassifier/10",
+  "timestamp_start": "2025-05-28T10:56:09.800668",
+  "timestamp_end": "2025-05-28T10:57:19.902381"
+}{
+  "flow_run_id": "a73aaeaf-4d53-4b87-99b8-120198c744c6",
+  "kwargs": {
+    "working_dir": "./data_flow1/",
+    "dataset_name": "steam_games_dataset.csv",
+    "report_name": "datadrift_results.html",
+    "model_name": "RandomForestMulticlassifier",
+    "cutoff_year": 2020
+  },
+  "git_commit_hexsha": "6d1bcb50fd69a7ce4fbd37312bfa6f3fd52d9873",
+  "model_version": null,
+  "model_alias": null,
+  "model_path_full": "models:/RandomForestMulticlassifier/9",
+  "timestamp_start": "2025-05-28T10:57:31.530551",
+  "timestamp_end": "2025-05-28T10:57:43.139124"
+}{
+  "flow_run_id": "5124978e-3371-4fcb-b42a-50eb4e1f132d",
+  "kwargs": {
+    "working_dir": "./data_flow1/",
+    "dataset_name": "steam_games_dataset.csv",
+    "flow_run_id_A": "13985827-644f-4074-a313-0867c71bb71d",
+    "flow_run_id_B": "9cef6731-1fcd-49be-a8af-40ea97f2010d",
+    "hash_function_string": "gAWV0AMAAAAAAACMF2Nsb3VkcGlja2xlLmNsb3VkcGlja2xllIwOX21ha2VfZnVuY3Rpb26Uk5QoaACMDV9idWlsdGluX3R5cGWUk5SMCENvZGVUeXBllIWUUpQoSwJLAEsASwVLBUsDQ7KXAHwBmwBkAXwAmwCdA30CdAEAAAAAAAAAAAAAagEAAAAAAAAAAHwCoAIAAAAAAAAAAAAAAAAAAAAAAAAAAGQCpgEAAKsBAAAAAAAAAACmAQAAqwEAAAAAAAAAAH0DdAcAAAAAAAAAAAAAfAOgBAAAAAAAAAAAAAAAAAAAAAAAAAAApgAAAKsAAAAAAAAAAABkA6YCAACrAgAAAAAAAAAAfQR8BGQEegYAAGQFegsAAFMAlCiMYAogICAgICAgIEdlbmVyYXRlcyBhIGhhc2ggZnJvbSBkYXRldGltZSBhbmQgYSBzZWVkLCB0aGVuIHJldHVybnMgZmxvYXQgYmV0d2VlbiAwIGFuZCAxLgogICAgICAgIJSMAV+UjAV1dGYtOJRLEE3oA0dAj0AAAAAAAHSUKIwHaGFzaGxpYpSMBnNoYTI1NpSMBmVuY29kZZSMA2ludJSMCWhleGRpZ2VzdJR0lCiMCGRhdGV0aW1llIwEc2VlZJSMCGRhdGFfc3RylIwIaGFzaF9vYmqUjAhoYXNoX2ludJR0lIwML2FwcC9tYWluLnB5lIwNaW5wdXRfdG9faGFzaJSMDWlucHV0X3RvX2hhc2iUS5hDXIAA8AgAFxvQEyfQEyeYWNATJ9ATJ4gI3RMalD6gKKcvoi+wJ9EiOtQiOtETO9QTO4gI3RMWkHjXFynSFynRFyvUFyuoUtETMNQTMIgI2A8XmCSJf6AW0Q8n0AgnlEMAlCkpdJRSlH2UKIwLX19wYWNrYWdlX1+UTowIX19uYW1lX1+UjAhfX21haW5fX5SMCF9fZmlsZV9flGgZdU5OTnSUUpRoAIwSX2Z1bmN0aW9uX3NldHN0YXRllJOUaCZ9lH2UKGgijA1pbnB1dF90b19oYXNolIwMX19xdWFsbmFtZV9flIwNaW5wdXRfdG9faGFzaJSMD19fYW5ub3RhdGlvbnNfX5R9lIwOX19rd2RlZmF1bHRzX1+UTowMX19kZWZhdWx0c19flEsqhZSMCl9fbW9kdWxlX1+UaCOMB19fZG9jX1+UaAmMC19fY2xvc3VyZV9flE6MF19jbG91ZHBpY2tsZV9zdWJtb2R1bGVzlF2UjAtfX2dsb2JhbHNfX5R9lGgNaACMCXN1YmltcG9ydJSTlGgNhZRSlHN1hpSGUjAu",
+    "split_function_string": "gAWVEwMAAAAAAACMF2Nsb3VkcGlja2xlLmNsb3VkcGlja2xllIwOX21ha2VfZnVuY3Rpb26Uk5QoaACMDV9idWlsdGluX3R5cGWUk5SMCENvZGVUeXBllIWUUpQoSwJLAEsASwJLAksDQyaXAHwAZAFrAAAAAAByAmQCUwB8AGQDawAAAAAAcgJkBFMAZAVTAJQojNQKICAgICAgICBBc3NpZ24gaGFzaCB2YWx1ZXMgYmV0d2VlbiAwIGFuZCAxIHRvIGNsYXNzZXMuCiAgICAgICAgOnBhcmFtIGg6CiAgICAgICAgOnJldHVybjogRWxlbWVudCBvZiBbLTEsIDAsIDFdLCByZXByZXNlbnRpbmcgY2xhc3NlcyBbQSwgTm9uZSwgQl0uCiAgICAgICAgICBUaGUgTm9uZSBjbGFzcyBjYW4gYWxzbyBiZSBleGNsdWRlZCBlbnRpcmVseQogICAgICAgIJRHP9mZmZmZmZpK/////0c/6ZmZmZmZmksBSwB0lCmMBGhhc2iUjARzZWVklIaUjAwvYXBwL21haW4ucHmUjA1oYXNoX3RvX2NsYXNzlIwNaGFzaF90b19jbGFzc5RLpUMlgADwDgAMEJAjijqIOtgTFZAy2A0RkEOKWoha2BMUkDHgExSQMZRDAJQpKXSUUpR9lCiMC19fcGFja2FnZV9flE6MCF9fbmFtZV9flIwIX19tYWluX1+UjAhfX2ZpbGVfX5RoDnVOTk50lFKUaACMEl9mdW5jdGlvbl9zZXRzdGF0ZZSTlGgbfZR9lChoF4wNaGFzaF90b19jbGFzc5SMDF9fcXVhbG5hbWVfX5SMDWhhc2hfdG9fY2xhc3OUjA9fX2Fubm90YXRpb25zX1+UfZSMDl9fa3dkZWZhdWx0c19flE6MDF9fZGVmYXVsdHNfX5RLKoWUjApfX21vZHVsZV9flGgYjAdfX2RvY19flGgJjAtfX2Nsb3N1cmVfX5ROjBdfY2xvdWRwaWNrbGVfc3VibW9kdWxlc5RdlIwLX19nbG9iYWxzX1+UfZR1hpSGUjAu",
+    "seed": 12021340,
+    "cutoff_year": 2020
+  },
+  "Results": {
+    "results_A": {
+      "accuracy": 0.6592828531441532,
+      "balanced_accuracy": 0.34845633007036364,
+      "f1": 0.3256801602473605,
+      "groupsize": 51802,
+      "model": "models:/RandomForestMulticlassifier/9"
+    },
+    "results_B": {
+      "accuracy": 0.6839274952482499,
+      "balanced_accuracy": 0.443998698956145,
+      "f1": 0.42178425755260085,
+      "groupsize": 51802,
+      "model": "models:/RandomForestMulticlassifier/10"
+    }
+  },
+  "git_commit_hexsha": "7f029e97d6673757a6ded32d29650ef06e8067f8",
+  "timestamp_start": "2025-05-28T10:57:52.851569",
+  "timestamp_end": "2025-05-28T10:57:59.454362"
 }

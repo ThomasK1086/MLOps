@@ -1,41 +1,11 @@
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-import json
-
-
 
 
 from autocommit import AutoCommitter, GitCredentials
 from flowexecutor import FlowExecutor, Hyperparameters, pprint_dict
 import hashlib
-
-
-
-
-
-
-"""
-def test_connections():
-    "Test if we can connect to Prefect and mlflow server"
-    status = True
-    try:
-        with get_client(sync_client=True) as client:
-            response = client.hello()
-        print(f"✅ Connected to Prefect server at")
-    except Exception as e:
-        status = False
-        print(f"❌ Failed to connect to Prefect: {e}")
-
-    try:
-        # Try to list experiments to test connection
-        experiments = mlflow.search_experiments()
-        print(f"✅ Connected to MLflow server")
-    except Exception as e:
-        status = False
-        print(f"❌ Failed to connect to MLflow: {e}")
-    return status
-"""
 
 
 if __name__ == '__main__':

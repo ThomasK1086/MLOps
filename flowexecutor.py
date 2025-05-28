@@ -220,10 +220,9 @@ class FlowExecutor:
 
 
 
-
 class Hyperparameters():
     def __init__(self, filepath):
-        self.filepath = filepath
+        self.filepath = Path(filepath)
         self.set_default_hyperparameters()
 
     def set_default_hyperparameters(self):
@@ -235,13 +234,15 @@ class Hyperparameters():
             "random_state": 42
         }
         self.model_hyperparameters = model_hyperparameters
-        with open(self.filepath, "w", encoding="utf-8") as f:
+        with open(self.filepath, "w+", encoding="utf-8") as f:
             f.write(json.dumps(model_hyperparameters, indent=2))
 
     def __str__(self):
         return str(self.model_hyperparameters)
 
     def change_to_new_hyperparameters(self):
+        if not self.filepath.parent.exists():
+            self.filepath.parent.mkdir(parents=True, exist_ok=True)
         model_hyperparameters = {
             "max_depth": 20,
             "n_estimators": 100,
