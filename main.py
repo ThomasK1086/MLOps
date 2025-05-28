@@ -20,6 +20,14 @@ if __name__ == '__main__':
         private_key_path=os.getenv("PRIVATE_KEY_PATH"),
         installation_id=os.getenv("INSTALLATION_ID"),
     )
+    # Init flow repository
+    gitcommitter = AutoCommitter(
+        repo_path='./flows_git',
+        credentials=creds,
+        subfolder="training_flow"
+    )
+    gitcommitter.pull()
+    
     hp_path = Path("./flows_git/training_flow/model_hyperparameters.txt")
     model_hyperparameters = Hyperparameters(hp_path)
 
