@@ -226,6 +226,8 @@ class Hyperparameters():
         self.set_default_hyperparameters()
 
     def set_default_hyperparameters(self):
+        if not self.filepath.parent.exists():
+            self.filepath.parent.mkdir(parents=True, exist_ok=True)
         model_hyperparameters = {
             "max_depth": 10,
             "n_estimators": 30,
@@ -251,7 +253,7 @@ class Hyperparameters():
             "random_state": 42
         }
         self.model_hyperparameters = model_hyperparameters
-        with open(self.filepath, "w", encoding="utf-8") as f:
+        with open(self.filepath, "w+", encoding="utf-8") as f:
             f.write(json.dumps(model_hyperparameters, indent=2))
 
 
