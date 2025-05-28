@@ -178,7 +178,7 @@ if __name__ == '__main__':
 
     # Functions need to be serialized
     hash_function_string = executor.serialize_function(input_to_hash)
-    split_function_string = executor.serialize_function(hash_function_string)
+    split_function_string = executor.serialize_function(hash_to_class)
 
     ab_test_args = {
         "working_dir": artifact_first["kwargs"]["output_dir"],
