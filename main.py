@@ -1,11 +1,13 @@
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-
-
-from autocommit import AutoCommitter, GitCredentials
-from flowexecutor import FlowExecutor, Hyperparameters, pprint_dict
 import hashlib
+
+
+# imports from local project files
+from utils_autocommit import AutoCommitter, GitCredentials
+from utils_flowexecutor import FlowExecutor
+from utils import Hyperparameters, pprint_dict
 
 
 if __name__ == '__main__':
@@ -27,7 +29,7 @@ if __name__ == '__main__':
         subfolder="training_flow"
     )
     gitcommitter.pull()
-    
+
     hp_path = Path("./flows_git/training_flow/model_hyperparameters.txt")
     model_hyperparameters = Hyperparameters(hp_path)
 
