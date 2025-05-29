@@ -45,10 +45,10 @@ def pprint_dict(input: dict) -> None:
         if isinstance(value, dict):
             print(f'  {key} :  \u007b')
             for key2, value2 in value.items():
-                if isinstance(value, dict):
-                    print(f'    {key} :  \u007b')
-                    for key2, value2 in value.items():
-                        print(f"      {key2} : {value2}")
+                if isinstance(value2, dict):
+                    print(f'    {key2} :  \u007b')
+                    for key3, value3 in value2.items():
+                        print(f"      {key3} : {value3}")
                     print(f"    \u007d")
             else:
                 print(f"    {key2} : {value2}")

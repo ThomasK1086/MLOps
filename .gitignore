@@ -9,6 +9,9 @@ test*
 
 *.drawio
 
+sample.ipynb
+main.ipynb
+
 *.pem
 .env
 
